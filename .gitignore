@@ -14,7 +14,7 @@ build/
 
 .vscode/
 
-# Prerequisites
+# Prerequisite
 *.d
 
 # Object files
