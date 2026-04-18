@@ -3,6 +3,9 @@ primeexplorer
 *.o
 *.out
 
+.gitignore
+.primes
+
 # macOS system files
 .DS_Store
 

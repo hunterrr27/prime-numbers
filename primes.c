@@ -37,7 +37,7 @@ void drawPrimeGraph(int *primes, int countPrimes, int N)
     int plotTypeActive = LINEAR; 
     bool plotTypeEditMode = false;
 
-    // This is your mathematical origin
+    // this is mathematical origin since top left 0,0 regarded
     int originX = 50;
     int originY = screenHeight - 50;
 
