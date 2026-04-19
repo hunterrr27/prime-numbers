@@ -14,6 +14,9 @@ build/
 
 .vscode/
 
+primes*/
+primes.dSYM/
+
 # Prerequisite
 *.d
 
