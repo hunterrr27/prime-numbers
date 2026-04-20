@@ -6,20 +6,31 @@
 #include "render.h"
 #include "raylib.h"
 
-void render_points(Appstate *state)
+void render_points(const Appstate *state)
 {
 
 
 }
 
-void render_grid(Appstate *state)
+void render_grid(const Appstate *state)
 {
 
 
 }
 
-void render_ui(Appstate *state)
+void render_ui(const Appstate *state)
 {
 
 
+}
+
+void render(const AppState *state) {
+    BeginDrawing();
+    ClearBackground(RAYWHITE);
+
+    render_grid(state);
+    render_points(state);
+    render_ui(state);
+
+    EndDrawing();
 }
