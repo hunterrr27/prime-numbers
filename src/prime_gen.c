@@ -16,13 +16,14 @@ bool isPrime(int n)
     return true;
 }
 
-void regenerate_primes(Appstate *state)
+void regenerate_primes(AppState *state)
 {
     int countPrimes = 0;
+    state->primes = malloc(sizeof(int) * state->N);
     for (int i = 2; i < state->N; i++) {
         if (isPrime(i)) {
             state->primes[countPrimes++] = i;
         }
     }
-    state->countPrimes = countPrimes;
+    state->primeCount = countPrimes;
 }
