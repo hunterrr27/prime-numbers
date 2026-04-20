@@ -8,7 +8,7 @@ LDFLAGS = -L/opt/homebrew/lib -lraylib -framework IOKit -framework Cocoa -framew
 TARGET = primes
 
 # Source files
-SRC = primes.c
+SRC = main.c prime_gen.c modes.c render.c ui.c state.c
 
 # Default rule
 all: $(TARGET)
