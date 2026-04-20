@@ -7,5 +7,7 @@ void render_grid(const AppState *state);
 void render_points(const AppState *state);
 void render_ui(const AppState *state);
 
+void render(const AppState *state);
+
 #endif
 
