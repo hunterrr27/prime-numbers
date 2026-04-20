@@ -1,8 +1,8 @@
 #include "state.h"
 
-Appstate init_state(void)
+void init_state(Appstate *state)
 {
-  return Appstate state = {
+  Appstate state = {
       .N = 313,
       .zoom = 1.0f,
       .offsetX = 0,
@@ -10,4 +10,9 @@ Appstate init_state(void)
       .mode = MODE_LINEAR,
       .needs_recompute = true
   }
+}
+
+void cleanup_state(Appstate *state)
+{
+  Appstate state = { 0 };
 }
