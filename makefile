@@ -1,24 +1,29 @@
-
 # Variables
 CC = clang
-CFLAGS = -Wall -std=c11 -I. -I/opt/homebrew/include
+CFLAGS = -Wall -std=c11 -Iinclude -I/opt/homebrew/include
 LDFLAGS = -L/opt/homebrew/lib -lraylib -framework IOKit -framework Cocoa -framework OpenGL
 
-# Target executable name
-TARGET = primes
+# Directories
+SRC_DIR = src
+BIN_DIR = bin
 
-# Source files
-SRC = primes.c
+# Target executable name
+TARGET = $(BIN_DIR)/primes
+
+# Source files (prefixed with src/)
+SRC = $(SRC_DIR)/main.c $(SRC_DIR)/prime_gen.c $(SRC_DIR)/modes.c \
+      $(SRC_DIR)/render.c $(SRC_DIR)/ui.c $(SRC_DIR)/state.c
 
 # Default rule
 all: $(TARGET)
 
 $(TARGET): $(SRC)
+	@mkdir -p $(BIN_DIR)
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
 
 # Clean up build files
 clean:
-	rm -f $(TARGET)
+	rm -rf $(BIN_DIR)
 
 # Run the program
 run: all
