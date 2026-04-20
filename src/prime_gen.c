@@ -1,6 +1,6 @@
 #include "prime_gen.c"
 
-bool isPrime(int number)
+bool isPrime(Appstate *state)
 {
     if (number < 2) return false;
 
