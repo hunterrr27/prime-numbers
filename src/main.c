@@ -12,7 +12,10 @@
 
 int main(void)
 {
-    Appstate state = init_state();
+    AppState state;
+    init_state(&state);
+    // generatePrimes(&state) to fill state.primes and state.primeCount
+    // set state.needsRecompute = true;
     InitWindow(1200, 800, "Prime Number Explorer");
 
     while (!WindowShouldClose()) {
