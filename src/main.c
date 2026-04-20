@@ -8,52 +8,31 @@
 
 
 
-int main(int argc, char *argv[])
+int main(void)
 {
-    if (argc < 2) {
-        printf("Usage: %s N\n", argv[0]);
-        return 1;
-    }
+    Appstate state = init_state();
+    InitWindow(1200, 800, "Prime Number Explorer");
 
-    int N = atoi(argv[1]);
-    if (N < 2) {
-        printf("N must be >= 2\n");
-        return 1;
-    }
-
-    // Allocate max possible space on the heap
-    int *tmp = malloc(N * sizeof(int));
-    if (!tmp) {
-        fprintf(stderr, "Memory allocation failed.\n");
-        exit(1);
-    }
-
-    // Fill with primes
-    int countPrimes = 0;
-    for (int i = 2; i <= N; i++) {
-        if (isPrime(i)) {
-            tmp[countPrimes++] = i;
+    while (!WindowShouldClose()) {
+        handle_input(&state);
+        
+        if (state.needs_recompute) {
+            regenerate_primes(&state);
+            regenerate_points(&state);
+            state.needs_recompute = false;
         }
-    }
-
-    // Shrink to exact size
-    int *primes = realloc(tmp, countPrimes * sizeof(int));
-    if (!primes) {
-        // If realloc fails, tmp is still valid
-        primes = tmp;
-    }
-
-    // Print primes (for debugging)
-    for (int i = 0; i < countPrimes; i++) {
-        printf("%d ", primes[i]);
-    }
-    printf("\n");
-
-    // Call Raylib graphing function
-    drawPrimeGraph(primes, countPrimes, N);
-
-    // Cleanup
-    free(primes);
-
+        
+        BeginDrawing();
+        
+        ClearBackground(RAYWHITE);
+        render_grid(Appstate *state);
+        render_point(Appstate *state);
+        draw_ui(&state);
+        
+        EndDrawing();
+        
+    cleanup_state(&state);
+    CloseWindow();
+        
     return 0;
 }
