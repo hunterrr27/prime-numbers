@@ -15,15 +15,4 @@ void handle_input(Appstate *state)
 
 }
 
-void draw_ui(Appstate *state)
-{
-  // draw plot mode dropdown box and N text input box
-  // Rectangle box = {GetScreenWidth() / 2 - 200, GetScreenHeight() / 2 - 60, 400, 120};
-  // GUITextInputBox(Rectangle){box, "Enter N", "Type a new value for N", state.inputbuffer, sizeof(state.inputbuffer), true};
-  
-  // draw mouse (x,y) coordinates in bottom left of screen 
-  // Vector 2 mouse = GetMousePosition();
-  // DrawText(FormatText("(%d,%d)", mouse.x, mouse.y), 50, GetScreenHeight() - 50, 10, RED);
-
-}
 
