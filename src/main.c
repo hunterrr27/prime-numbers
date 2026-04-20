@@ -25,8 +25,8 @@ int main(void)
         BeginDrawing();
         
         ClearBackground(RAYWHITE);
-        render_grid(Appstate *state);
-        render_point(Appstate *state);
+        render_grid(&state);
+        render_point(&state);
         draw_ui(&state);
         
         EndDrawing();
