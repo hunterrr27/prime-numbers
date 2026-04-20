@@ -1,15 +1,49 @@
-#include "primes.h"
+#ifndef STATE_H
+#define STATE_H
 
-typedef struct Appstate {
-  int N;
-  int *primes;
-  int prime_count;
-  plot_mode mode;
-  float zoom;
-  float offsetX;
-  float offsetY;
-  bool show_input_box;
-  char input_buffer[32];
-  int input_result;
-  bool needs_recompute;
-} Appstate;
+#include <stdbool.h>
+
+typedef enum {
+    MODE_LINEAR,
+    MODE_STEP,
+    MODE_ULAM,
+    MODE_POLAR,
+    MODE_COUNT
+} PlotMode;
+
+typedef struct {
+    int N;
+    int *primes;
+    int primeCount;
+
+    // Visualization points (computed by modes)
+    struct Point *points;
+    int pointCount;
+
+    // Camera / view
+    float zoom;
+    float offsetX;
+    float offsetY;
+
+    // UI
+    bool showInputBox;
+    char inputBuffer[32];
+    int inputResult;
+
+    // Mode selection
+    PlotMode mode;
+
+    // Recompute flags
+    bool needsRecompute;
+
+} AppState;
+
+typedef struct Point {
+    float x, y;
+} Point;
+
+// State management
+void init_state(AppState *state);
+void cleanup_state(AppState *state);
+
+#endif
