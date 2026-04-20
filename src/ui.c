@@ -2,11 +2,12 @@
 // detects kbm i/o, handles raygui widgets, opens text input boxes, switches visualization modes, sets needsRecompute = true when needed, adjusts zoom and pan, etc
 // ui.c does NOT draw points, do math, or generate prime numbers
 
-#include "ui.h"
-#include "raylib.h"
+#define RAYGUI_IMPLEMENTATION
 #include "raygui.h"
 
-#define RAYGUI_IMPLEMENTATION
+#include "ui.h"
+#include "state.h"
+#include "raylib.h"
 
 void handle_input(Appstate *state)
 {
