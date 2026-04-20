@@ -6,6 +6,8 @@
 #include "raylib.h"
 #include "raygui.h"
 
+#define RAYGUI_IMPLEMENTATION
+
 void handle_input(Appstate *state)
 {
 
