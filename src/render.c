@@ -6,19 +6,20 @@
 #include "render.h"
 #include "raylib.h"
 
-void render_points(const Appstate *state)
+void render_points(const AppState *state)
+{
+    // for loop from 0 to pointCount
+    // set point x coordinate to be points[i].x + offsetX * the zoom and scale factor
+
+}
+
+void render_grid(const AppState *state)
 {
 
 
 }
 
-void render_grid(const Appstate *state)
-{
-
-
-}
-
-void render_ui(const Appstate *state)
+void render_ui(const AppState *state)
 {
 
 
