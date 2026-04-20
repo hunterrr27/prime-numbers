@@ -11,8 +11,15 @@
 
 void handle_input(Appstate *state)
 {
-  // handle input for plot mode dropdown box and N text input box
+  // handle input for plot mode dropdown box 
 
+  // handle input for N text box
+
+  // handle input for zoom and pan
+
+  // handle input for mouse hovering over points to display coordinates
+
+  
 }
 
 
