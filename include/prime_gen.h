@@ -1,13 +1,9 @@
-#ifndef PRIMES_H
-#define PRIMES_H
+#ifndef PRIME_GEN_H
+#define PRIME_GEN_H
 
-#include <stdio.h>
-#include "raylib.h"
-#include "raygui.h"
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
-#include <stdbool.h>
+#include "state.h"
 
-#endif // !PRIMES_H
-#define PRIMES_H
+bool is_prime(int n);
+void regenerate_primes(AppState *state);
+
+#endif
