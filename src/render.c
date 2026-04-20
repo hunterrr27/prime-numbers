@@ -4,6 +4,7 @@
 // it takes app data from AppState state and performs raylib Draw() functions
 
 #include "render.h"
+#include "raylib.h"
 
 void render_points(Appstate *state)
 {
