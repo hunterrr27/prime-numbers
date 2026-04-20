@@ -26,10 +26,40 @@ bool isPrime(int number)
     return true;
 }
 
-void drawPrimeGraph(int *primes, int countPrimes, int N)
+void drawPrimeGraph()
 {
     const int screenWidth = 800;
     const int screenHeight = 600;
+
+    char *input = "313";
+
+    int N = atoi(input);
+    if (N < 2) {
+        printf("N must be >= 2\n");
+        exit(1);
+    }
+
+    // Allocate max possible space on the heap
+    int *tmp = malloc(N * sizeof(int));
+    if (!tmp) {
+        fprintf(stderr, "Memory allocation failed.\n");
+        exit(1);
+    }
+
+    // Fill with primes
+    int countPrimes = 0;
+    for (int i = 2; i <= N; i++) {
+        if (isPrime(i)) {
+            tmp[countPrimes++] = i;
+        }
+    }
+
+    // Shrink to exact size
+    int *primes = realloc(tmp, countPrimes * sizeof(int));
+    if (!primes) {
+        // If realloc fails, tmp is still valid
+        primes = tmp;
+    }
 
     InitWindow(screenWidth, screenHeight, "Prime Number Explorer");
     SetTargetFPS(60);
@@ -64,8 +94,12 @@ void drawPrimeGraph(int *primes, int countPrimes, int N)
             //draw mouse pointer
             DrawCircleV(mouse, 3, RED);
 
+            // draw mouse (x, y) in top left
+            DrawText(TextFormat("(%f, %f)", mouse.x, mouse.y), 10, 10, 20, RED);
+
             // input textbox and dropdown for plotting function
-            
+            // start at 450 x and 50 y
+            GuiTextInputBox((Rectangle){600, 20, 100, 50}, TextFormat("%d", N), "Enter a value for N", NULL, input, 255, NULL);
 
             for (int i = 0; i < countPrimes; i++) {
                 float plotX = originX + (primes[i] * xScale);
@@ -91,54 +125,13 @@ void drawPrimeGraph(int *primes, int countPrimes, int N)
     }
     UnloadTexture(title_texture);
     CloseWindow();
-}
-
-int main(int argc, char *argv[])
-{
-    if (argc < 2) {
-        printf("Usage: %s N\n", argv[0]);
-        return 1;
-    }
-
-    int N = atoi(argv[1]);
-    if (N < 2) {
-        printf("N must be >= 2\n");
-        return 1;
-    }
-
-    // Allocate max possible space on the heap
-    int *tmp = malloc(N * sizeof(int));
-    if (!tmp) {
-        fprintf(stderr, "Memory allocation failed.\n");
-        exit(1);
-    }
-
-    // Fill with primes
-    int countPrimes = 0;
-    for (int i = 2; i <= N; i++) {
-        if (isPrime(i)) {
-            tmp[countPrimes++] = i;
-        }
-    }
-
-    // Shrink to exact size
-    int *primes = realloc(tmp, countPrimes * sizeof(int));
-    if (!primes) {
-        // If realloc fails, tmp is still valid
-        primes = tmp;
-    }
-
-    // Print primes (for debugging)
-    for (int i = 0; i < countPrimes; i++) {
-        printf("%d ", primes[i]);
-    }
-    printf("\n");
-
-    // Call Raylib graphing function
-    drawPrimeGraph(primes, countPrimes, N);
 
     // Cleanup
     free(primes);
+}
 
+int main(void)
+{
+    drawPrimeGraph();
     return 0;
 }
