@@ -1,12 +1,14 @@
-// primeexplorer.c
 // prime number explorer
 // by hunter freeman
 
-#define RAYGUI_IMPLEMENTATION
+#include "state.h"
+#include "render.h"
+#include "ui.h"
+#include "prime_gen.h"
+#include "modes.h"
 
-#include "primes.h"
-
-
+#include "raylib.h"
+#include "raygui.h"
 
 int main(void)
 {
