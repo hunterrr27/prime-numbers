@@ -3,6 +3,8 @@
 // ui.c does NOT draw points, do math, or generate prime numbers
 
 #include "ui.h"
+#include "raylib.h"
+#include "raygui.h"
 
 void handle_input(Appstate *state)
 {
