@@ -12,21 +12,24 @@ void init_state(AppState *state)
   state->pointCount = 0;
 
   state->zoom = 1.0f;
-  state->offsetX = 0.0f;
-  state->offsetY = 0.0f;
+  state->offsetX = 50.0f;
+  state->offsetY = 50.0f;
 
   state->showInputBox = false;
   memset(state->inputBuffer, 0, sizeof(state->inputBuffer));
   state->inputResult = 0;
 
-  state->dropdownEditMode = false;
-  state->dropdownActive = 0;
+  state->inputEditMode = false;
+  state->inputActive = 0;
   state->mode = MODE_LINEAR;
   state->needsRecompute = true;
 
   // my extras
   state->screenWidth = 1200;
   state->screenHeight = 800;
+  state->mouse = GetMousePosition();
+  state->scaleX = 10.0f;
+  state->scaleY = 1.5f;
 }
 
 void cleanup_state(AppState *state)

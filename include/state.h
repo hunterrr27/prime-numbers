@@ -2,6 +2,7 @@
 #define STATE_H
 
 #include <stdbool.h>
+#include "raylib.h"
 
 typedef enum {
     MODE_LINEAR,
@@ -32,8 +33,8 @@ typedef struct {
 
     // Mode selection
     PlotMode mode;
-    bool dropdownEditMode;
-    int *dropdownActive;
+    bool inputEditMode;
+    int *inputActive;
 
     // Recompute flags
     bool needsRecompute;
@@ -41,6 +42,9 @@ typedef struct {
     // extras i defined that i might not need
     int screenHeight;
     int screenWidth;
+    Vector2 mouse;
+    float scaleX;
+    float scaleY;
 
 } AppState;
 
