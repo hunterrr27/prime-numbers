@@ -23,7 +23,7 @@ int main(void)
         
         if (state.needsRecompute) {
             regenerate_primes(&state);
-            regenerate_points(&state);
+            compute_points_linear(&state);
             state.needsRecompute = false;
         }
         

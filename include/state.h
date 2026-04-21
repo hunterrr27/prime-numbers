@@ -33,6 +33,7 @@ typedef struct {
     // Mode selection
     PlotMode mode;
     bool dropdownEditMode;
+    int *dropdownActive;
 
     // Recompute flags
     bool needsRecompute;

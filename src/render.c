@@ -37,7 +37,7 @@ void render_ui(const AppState *state)
     GuiTextInputBox(box, "Enter N", "Type a new value for N", "OK", state->inputBuffer, sizeof(state->inputBuffer), false);
     
     // draw plot mode dropdown box
-    GuiDropdownBox(box, "MODE_LINEAR;MODE_STEP;MODE_POLAR;MODE_ULAM;MODE_COUNT", state->mode, state->dropdownEditMode);
+    GuiDropdownBox(box, "MODE_LINEAR;MODE_STEP;MODE_POLAR;MODE_ULAM;MODE_COUNT", state->dropdownActive, state->dropdownEditMode);
 
     
     // draw mouse (x,y) coordinates in bottom left of screen 
