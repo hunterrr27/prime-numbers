@@ -8,7 +8,7 @@ void init_state(AppState *state)
   state->primes = malloc(sizeof(int) * state->N);
   state->primeCount = 0;
 
-  state->points = malloc(sizeof(int) * state->N); // allocate enough space for worst case all numbers 2 to N are primes
+  state->points = malloc(sizeof(Point) * state->N); // allocate enough space for worst case all numbers 2 to N are primes
   state->pointCount = 0;
 
   state->zoom = 1.0f;
@@ -20,6 +20,7 @@ void init_state(AppState *state)
   state->inputResult = 0;
 
   state->dropdownEditMode = false;
+  state->dropdownActive = 0;
   state->mode = MODE_LINEAR;
   state->needsRecompute = true;
 

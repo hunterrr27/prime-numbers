@@ -21,6 +21,7 @@ bool isPrime(int n)
 void regenerate_primes(AppState *state)
 {
     int countPrimes = 0;
+    free(state->primes);
     state->primes = malloc(sizeof(int) * state->N);
     for (int i = 2; i < state->N; i++) {
         if (isPrime(i)) {

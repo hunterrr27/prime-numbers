@@ -8,29 +8,31 @@
 #include "raygui.h"
 #include <stdlib.h>
 #include "ui.h"
+#include "state.h"
 
-void render_points(const AppState *state)
+void render_points(AppState *state)
 {
     // for loop from 0 to pointCount
     // set point x coordinate to be points[i].x + offsetX * the zoom and scale factor
     for (int i = 0; i < state->pointCount; i++) {
-        state->points[i].x = (state->points[i].x + state->offsetX) * state->zoom;
-        state->points[i].y = (state->points[i].y + state->offsetY) * state->zoom;
+        float x = (state->points[i].x + state->offsetX) * state->zoom;
+        float y = (state->points[i].y + state->offsetY) * state->zoom;
+        DrawCircle(x, y, 3, BLUE);
     }
 
 }
 
-void render_grid(const AppState *state)
+void render_grid(AppState *state)
 {
     // draw x and y axis
     // x axis 
-    DrawLine(50, state->screenHeight - 50, state->screenWidth - 50, state->screenWidth - 50, BLACK);
+    DrawLine(50, state->screenHeight - 50, state->screenWidth - 50, state->screenHeight - 50, BLACK);
     // y axis DrawLine(50, 50, 50, GetScreenHeight() - 50);
     DrawLine(50, 50, 50, state->screenHeight - 50, BLACK);
 
 }
 
-void render_ui(const AppState *state)
+void render_ui(AppState *state)
 {
     // draw N text input box
     Rectangle box = {GetScreenWidth() / 2 - 200, GetScreenHeight() / 2 - 60, 400, 120};
@@ -49,13 +51,10 @@ void render_ui(const AppState *state)
 
 }
 
-void render(const AppState *state) {
-    BeginDrawing();
-    ClearBackground(RAYWHITE);
+void render(AppState *state) {
 
     render_grid(state);
     render_points(state);
     render_ui(state);
 
-    EndDrawing();
 }

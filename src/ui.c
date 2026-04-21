@@ -11,11 +11,16 @@
 
 void handle_input(AppState *state)
 {
-  int N = 313;
+  // parse inputbuffer for N
+  if (strlen(state->inputBuffer) > 0) {
+    state->N = atoi(state->inputBuffer);
+    state->needsRecompute = true;
+    memset(state->inputBuffer, 0, sizeof(state->inputBuffer));
+  }
+  
   // handle input for plot mode dropdown box 
 
   // handle input for N text box
-  state->N = N;
 
   // handle input for zoom and pan
 
